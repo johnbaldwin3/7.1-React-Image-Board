@@ -12,6 +12,49 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
   box-sizing: border-box;
 }
 
+body {
+  background-color: #EDEEEF;
+}
+
+.header-bar {
+  color: white;
+}
 img {
   max-width: 100%;
+}
+
+.image-list-item {
+  list-style: none;
+}
+
+.ul-contain {
+  padding-left: 0;
+}
+
+.caption {
+  margin-top: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.thumbnail {
+  box-shadow: 0px 0px 20px 1px rgba(143, 142, 142, 0.37);
+}
+.main-contain {
+  padding-top: 20px;
+  background-color: #DFE0E1;
+  position: relative;
+  z-index: -1;
+}
+
+.image-div {
+  //background-color: #E0E1E2;
+}
+
+.head-bar {
+  background-color: #476C99;
+  margin: 0;
+  padding: 15px;
+  box-shadow: 1px 1px 8px grey;
+  position: static;
+  z-index: 2000;
 }

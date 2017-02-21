@@ -4,7 +4,7 @@ var Backbone = require('backbone');
 var Image = Backbone.Model.extend({
   idAttribute: '_id',
   defaults : {
-    url : 'www.unsplashit.com',
+    url : 'https://unsplash.it/200',
     caption: 'Picture Info'
   }
 });

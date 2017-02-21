@@ -11,8 +11,9 @@ var ImageForm = React.createClass({
   handleURLChange: function(event){
     this.setState({url: event.target.value});
   },//another method for caption
-  handleCaptionChange: function() {
+  handleCaptionChange: function(event) {
     this.setState({caption: event.target.value});
+    console.log('caption', event.target.value);
   },
   submitImage: function(event){
     event.preventDefault();
@@ -24,15 +25,15 @@ var ImageForm = React.createClass({
 
       <div  className="col-md-8 col-md-offset-2 form-holder">
         <form onSubmit={this.submitImage}>
-        <div className="form-group">
-          <label htmlFor="imageUrl">Image URL:</label>
-          <input onChange={this.handleURLChange} type="text" className="form-control" id="imageUrl" name="blogTitle" placeholder="Image URL..." value={this.state.url}/>
-          <label htmlFor="imageCaption">Image Caption:</label>
-          <br></br>
-          <textarea onChange={this.handleCaptionChange} id="imageCaption" className="form-control" rows="4" name="blogBody" placeholder="Image Caption..." value={this.state.caption}></textarea>
-          <button onClick= {this.editImage} type="submit" className="btn btn-success">Edit Image &amp; Caption</button>
-          <button type="submit" className="btn btn-primary">Save &amp; Submit</button>
-        </div>
+          <div className="form-group">
+            <label htmlFor="imageUrl">Image URL:</label>
+            <input onChange={this.handleURLChange} type="text" className="form-control" id="imageUrl" name="blogTitle" placeholder="Image URL..." value={this.state.url}/>
+            <label htmlFor="imageCaption">Image Caption:</label>
+            <br></br>
+            <textarea onChange={this.handleCaptionChange} id="imageCaption" className="form-control" rows="4" name="blogBody" placeholder="Image Caption..." value={this.state.caption} />
+            <button onClick= {this.returnHome} type="submit" className="btn btn-success">Cancel</button>
+            <button type="submit" className="btn btn-primary">Save &amp; Submit</button>
+          </div>
         </form>
       </div>
     )
@@ -44,14 +45,13 @@ var ImageListing = React.createClass({
   render: function() {
     var imagesList = this.props.images.map(function(image){
       return (
-      <li>
+      <li key={image.cid} className="image-list-item">
         <div className="row">
-          <div className="col-sm-8 col-md-8 col-md-offset-2">
+          <div className="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
             <div className="thumbnail">
               <img src={image.get('url')} alt="..." />
               <div className="caption">
-                <h3>Thumbnail label</h3>
-                <p>{image.get('caption')}</p>
+                <h5>{image.get('caption')}</h5>
                 <p><a href="#" className="btn btn-primary" role="button">Edit</a> <a href="#" className="btn btn-default btn-danger" role="button">Delete</a></p>
               </div>
             </div>
@@ -61,7 +61,7 @@ var ImageListing = React.createClass({
     )
     });
     return (
-      <ul>
+      <ul className="ul-contain">
         {imagesList}
       </ul>
     )
@@ -94,10 +94,12 @@ var ImagePage = React.createClass({
 
     return (
     <div>
-      <ImageForm  submitImage={this.submitImage}/>
-
-      <ImageListing images={this.state.collection} />
-
+      <div className="form-div">
+        <ImageForm  submitImage={this.submitImage}/>
+      </div>
+      <div className="image-div">
+        <ImageListing images={this.state.collection} />
+      </div>
     </div>
    )
   }

@@ -9,6 +9,8 @@ var ImagePage = require('./components/form.jsx').ImagePage;
 
 var images = new ImageCollection();
 
+
+
 console.log(images.url);
 ReactDOM.render(
   React.createElement(ImagePage, {images}),
