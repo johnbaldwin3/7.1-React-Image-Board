@@ -13,7 +13,7 @@ var ImageForm = React.createClass({
   },//another method for caption
   handleCaptionChange: function(event) {
     this.setState({caption: event.target.value});
-    console.log('caption', event.target.value);
+    //console.log('caption', event.target.value);
   },
   submitImage: function(event){
     event.preventDefault();
@@ -41,7 +41,10 @@ var ImageForm = React.createClass({
 });
 
 var ImageListing = React.createClass({
-
+  // deleteImage: function(event) {
+  //   event.preventDefault();
+  //
+  // },
   render: function() {
     var imagesList = this.props.images.map(function(image){
       return (
@@ -107,4 +110,4 @@ var ImagePage = React.createClass({
 
 module.exports = {
   ImagePage
-}
+};

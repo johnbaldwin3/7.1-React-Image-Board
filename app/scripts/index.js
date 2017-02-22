@@ -15,6 +15,6 @@ console.log(images.url);
 ReactDOM.render(
   React.createElement(ImagePage, {images}),
   document.getElementById('app')
-)
+);
 
 //any attribute doesn't need string
